@@ -7,21 +7,50 @@ import { ReactComponent as CogIcon } from "./icons/cog.svg";
 import { ReactComponent as ChevronIcon } from "./icons/chevron.svg";
 import { ReactComponent as ArrowIcon } from "./icons/arrow.svg";
 import { ReactComponent as BoltIcon } from "./icons/bolt.svg";
+import styled, { ThemeProvider } from "styled-components";
 
 import React, { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
+const theme = {
+  primary: "grey",
+  secondary: "green",
+};
+const Button = styled.button`
+  font-family: sans-serif;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+  background: ${(props) => props.theme.primary};
+  color: #fff;
+  &:hover {
+    background: blue;
+  }
+`;
+// background: ${(props) => (props.primary ? "red" : "green")};
 function App() {
   return (
-    <Navbar>
-      <NavItem icon={<PlusIcon />} />
-      <NavItem icon={<BellIcon />} />
-      <NavItem icon={<MessengerIcon />} />
+    <ThemeProvider theme={theme}>
+      <div>
+        <Navbar>
+          <NavItem icon={<PlusIcon />} />
+          <NavItem icon={<BellIcon />} />
+          <NavItem icon={<MessengerIcon />} />
 
-      <NavItem icon={<CaretIcon />}>
-        <DropdownMenu></DropdownMenu>
-      </NavItem>
-    </Navbar>
+          <NavItem icon={<CaretIcon />}>
+            <DropdownMenu></DropdownMenu>
+          </NavItem>
+        </Navbar>
+
+        <h1>Styled Components</h1>
+        <form action="">
+          <input type="text" />
+
+          <Button>Create</Button>
+        </form>
+      </div>
+    </ThemeProvider>
   );
 }
 
