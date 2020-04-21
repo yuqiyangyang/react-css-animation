@@ -8,25 +8,21 @@ import { ReactComponent as ChevronIcon } from "./icons/chevron.svg";
 import { ReactComponent as ArrowIcon } from "./icons/arrow.svg";
 import { ReactComponent as BoltIcon } from "./icons/bolt.svg";
 import styled, { ThemeProvider } from "styled-components";
-
 import React, { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
+
+import Button from "./Button";
 
 const theme = {
   primary: "grey",
   secondary: "green",
+  alert: "yellow",
+  font: "sans-serif",
 };
-const Button = styled.button`
-  font-family: sans-serif;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 5px;
-  padding: 7px 10px;
-  background: ${(props) => props.theme.primary};
-  color: #fff;
-  &:hover {
-    background: blue;
-  }
+
+const H1 = styled.h1`
+  font-family: ${(props) => props.theme.font};
+  font-size: 3rem;
 `;
 // background: ${(props) => (props.primary ? "red" : "green")};
 function App() {
@@ -43,7 +39,7 @@ function App() {
           </NavItem>
         </Navbar>
 
-        <h1>Styled Components</h1>
+        <H1>Styled Components</H1>
         <form action="">
           <input type="text" />
 
